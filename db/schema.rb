@@ -11,11 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531042615) do
+ActiveRecord::Schema.define(version: 20160601014523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "basic_profiles", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "maiden_name"
+    t.string   "formatted_name"
+    t.string   "headline"
+    t.string   "location"
+    t.string   "industry"
+    t.string   "summary"
+    t.string   "specialties"
+    t.string   "picture_url"
+    t.string   "public_profile_url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "linkedin_oauth_settings", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "atoken"
